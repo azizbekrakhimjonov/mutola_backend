@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-1#9*jelyh50jqxdk*@kvfu6cr&rhdkvuk@$s9#pf7@t2&4y(jd
 DEBUG = True
 
 ALLOWED_HOSTS = ['mutola.uz', 'www.mutola.uz']
+CSRF_TRUSTED_ORIGINS = ['https://mutola.uz']
 
 
 # Application definition
@@ -106,11 +107,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tashkent'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 import os
@@ -118,18 +119,12 @@ import os
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = '/var/www/mutola.uz/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
-
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = '/var/www/mutola.uz/media/'
 
 
 # Default primary key field type
