@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    {%load static%}
+    <title>Mutola - Bepul Kitob Do'koni HTML CSS Shabloni</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'icomoon/icomoon.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendor.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#header" tabindex="0">
+
+    <div id="header-wrap">
+        <header id="header">
+            <div class="container-fluid">
+                <div class="row"  >
+                    <div class="col-md-2">
+                        <div class="main-logo">
+                            <a class="navbar-logo" href="#" style="color: grey; font-size: 25px; font-weight: 600">Mutola.uz</a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-10">
+                        <nav id="navbar">
+                            <div class="main-menu stellarnav">
+                                <ul class="menu-list">
+                                    <li class="menu-item active"><a href="#home">Bosh sahifa</a></li>
+                                    <li class="menu-item"><a href="kitob_malumotlari" class="nav-link">Kitoblar</a></li>
+                                </ul>
+
+                                <div class="hamburger">
+                                    <span class="bar"></span>
+                                    <span class="bar"></span>
+                                    <span class="bar"></span>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <section id="billboard">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main-slider pattern-overlay">
+                        <div class="slider-item">
+                            <div class="banner-content">
+                                <h2 class="banner-title">Xush kelibsiz mutola.uz saytiga</h2>
+                                <p>Siz bu yerda barcha kitoblar haqida ma'lumot olishingiz mumkin.</p>
+                                <div class="btn-wrap">
+                                    <a href="#" class="btn btn-outline-accent btn-accent-arrow">Batafsil<i class="icon icon-ns-arrow-right"></i></a>
+                                </div>
+                            </div>
+                            <img src="{% static 'images/1book.png' %}" alt="banner" class="banner-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="client-holder" data-aos="fade-up">
+        <div class="container">
+            <div class="row">
+                <div class="inner-content">
+                    <div class="logo-wrap">
+                        <div class="grid">
+                            <a href="#"><img src="{% static 'images/client-image1.png' %}" alt="mijoz"></a>
+                            <a href="#"><img src="{% static 'images/client-image2.png' %}" alt="mijoz"></a>
+                            <a href="#"><img src="{% static 'images/client-image3.png' %}" alt="mijoz"></a>
+                            <a href="#"><img src="{% static 'images/client-image4.png' %}" alt="mijoz"></a>
+                            <a href="#"><img src="{% static 'images/client-image5.png' %}" alt="mijoz"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="best-seller" class="section-padding">
+        <div class="container">
+<div class="row justify-content-center">
+    {% for kop in kop %}
+    <div class="col-md-8">
+        <div class="row">
+            <div class="col-md-6">
+                <figure class="product-image">
+                    <img src="{{ kop.img.url }}" alt="kitob" class="single-image">
+                </figure>
+            </div>
+            <div class="col-md-6">
+                <div class="product-content">
+                    <h2 class="section-title divider">Eng ko‘p sotilgan kitob</h2>
+                    <div class="product-details">
+                        <div class="author-name">Muallifi: {{ kop.mualif }}</div>
+                        <h3 class="item-title">Nomi: {{ kop.nomi }}</h3>
+                        <div class="item-price">Asar: {{ kop.asar }}</div>
+                        <div class="btn-wrap">
+                            {% if kop.file %}
+                                <a href="{{ kop.file.url }}" class="btn btn-accent-arrow" download>Download<i class="icon icon-arrow-right"></i></a>
+                            {% else %}
+                                <span class="text-danger">Fayl mavjud emas</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+        </div>
+    </section>
+
+ <section id="quotation" class="align-center pb-5 mb-5">
+    <div class="inner-content">
+        <h2 class="section-title">Kun iqtibosi:</h2>
+        {% for i in iqtibos %}
+            <h3 class="section-subtitle">
+                "{{i.nomi}}"
+            </h3>
+        {% endfor %}
+    </div>
+</section>
+
+
+
+
+    <script src="{% static 'js/jquery-1.11.0.min.js' %}"></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+
+</html>
