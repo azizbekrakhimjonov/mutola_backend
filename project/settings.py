@@ -132,6 +132,12 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 
+# Static files directories - Django qidiradigan joylar
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+
+# Static files yig'iladigan joy (collectstatic qilganda)
 STATIC_ROOT = os.environ.get('STATIC_ROOT', BASE_DIR / 'staticfiles')
 
 # WhiteNoise configuration for static files

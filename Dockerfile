@@ -34,8 +34,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy project
 COPY . /app/
 
-# Collect static files
-RUN python manage.py collectstatic --noinput || true
+# Create staticfiles directory if it doesn't exist
+RUN mkdir -p /app/staticfiles
+
+# Collect static files (static/ papkasidagi fayllarni staticfiles/ ga yig'adi)
+RUN python manage.py collectstatic --noinput --clear || true
 
 # Expose port
 EXPOSE 7511
