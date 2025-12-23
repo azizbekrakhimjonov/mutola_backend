@@ -37,6 +37,10 @@ COPY . /app/
 # Create staticfiles directory if it doesn't exist
 RUN mkdir -p /app/staticfiles
 
+# Set environment variables for collectstatic
+ENV STATIC_ROOT=/app/staticfiles
+ENV DEBUG=False
+
 # Collect static files (static/ papkasidagi fayllarni staticfiles/ ga yig'adi)
 RUN python manage.py collectstatic --noinput --clear || true
 

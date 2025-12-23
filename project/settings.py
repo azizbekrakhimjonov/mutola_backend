@@ -138,13 +138,23 @@ STATICFILES_DIRS = [
 ]
 
 # Static files yig'iladigan joy (collectstatic qilganda)
-STATIC_ROOT = os.environ.get('STATIC_ROOT', BASE_DIR / 'staticfiles')
+STATIC_ROOT_ENV = os.environ.get('STATIC_ROOT', '')
+if STATIC_ROOT_ENV:
+    STATIC_ROOT = STATIC_ROOT_ENV
+else:
+    STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # WhiteNoise configuration for static files
+# WhiteNoise middleware static files ni avtomatik serve qiladi
+# STATICFILES_STORAGE collectstatic uchun kerak
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.environ.get('MEDIA_ROOT', BASE_DIR / 'media')
+MEDIA_ROOT_ENV = os.environ.get('MEDIA_ROOT', '')
+if MEDIA_ROOT_ENV:
+    MEDIA_ROOT = MEDIA_ROOT_ENV
+else:
+    MEDIA_ROOT = BASE_DIR / 'media'
 
 
 # Default primary key field type
