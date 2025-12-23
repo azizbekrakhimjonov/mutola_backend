@@ -21,13 +21,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-1#9*jelyh50jqxdk*@kvfu6cr&rhdkvuk@$s9#pf7@t2&4y(jd')
+SECRET_KEY = 'django-insecure-1#9*jelyh50jqxdk*@kvfu6cr&rhdkvuk@$s9#pf7@t2&4y(jd'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'True') == 'True'
+DEBUG = 'True'
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'mutola.uz,www.mutola.uz,localhost,127.0.0.1').split(',')
-CSRF_TRUSTED_ORIGINS = os.environ.get('CSRF_TRUSTED_ORIGINS', 'https://mutola.uz,https://www.mutola.uz').split(',')
+ALLOWED_HOSTS =['mutola.uz', 'www.mutola.uz', 'localhost', '127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://mutola.uz', 'https://www.mutola.uz']
 
 
 # Application definition
@@ -130,31 +130,14 @@ USE_I18N = True
 USE_TZ = False
 
 
+DEBUG = False
+
 STATIC_URL = '/static/'
-
-# Static files directories - Django qidiradigan joylar
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-]
-
-# Static files yig'iladigan joy (collectstatic qilganda)
-STATIC_ROOT_ENV = os.environ.get('STATIC_ROOT', '')
-if STATIC_ROOT_ENV:
-    STATIC_ROOT = STATIC_ROOT_ENV
-else:
-    STATIC_ROOT = BASE_DIR / 'staticfiles'
-
-# WhiteNoise configuration for static files
-# WhiteNoise middleware static files ni avtomatik serve qiladi
-# STATICFILES_STORAGE collectstatic uchun kerak
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT_ENV = os.environ.get('MEDIA_ROOT', '')
-if MEDIA_ROOT_ENV:
-    MEDIA_ROOT = MEDIA_ROOT_ENV
-else:
-    MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 
 
 # Default primary key field type
