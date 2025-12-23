@@ -30,5 +30,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),  # Asosiy sahifa sifatida universitetlar ro'yxati
     path('kitob_malumotlari/', views.kitob_malumotlari, name='second')
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+
+# Media files
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+else:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
